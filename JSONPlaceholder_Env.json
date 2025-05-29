@@ -1,0 +1,27 @@
+{
+	"id": "53c1bbde-df58-49d7-b89b-3373a4697110",
+	"name": "JSONPlaceholder_Env",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "https://jsonplaceholder.typicode.com",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "existingUserId",
+			"value": "1",
+			"type": "any",
+			"enabled": true
+		},
+		{
+			"key": "tempUserId",
+			"value": "",
+			"type": "any",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-05-29T09:23:06.508Z",
+	"_postman_exported_using": "Postman/11.47.2-250528-1607"
+}

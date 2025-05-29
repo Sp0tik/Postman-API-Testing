@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "737f2478-5cf2-4303-817c-4b2949b81437",
+		"name": "Asynchronous API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34209212",
+		"_collection_link": "https://spot66.postman.co/workspace/API_Testing~15429b1b-91d2-4b9c-b800-58a9d8084663/collection/34209212-737f2478-5cf2-4303-817c-4b2949b81437?action=share&source=collection_link&creator=34209212"
+	},
+	"item": [
+		{
+			"name": "Run Async Requests",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"Початок асинхронних запитів з Pre-request Script...\");\r",
+							"\r",
+							"// Отримуємо базовий URL з оточення\r",
+							"const baseUrl = pm.environment.get(\"baseUrl\");\r",
+							"\r",
+							"// Запит 1: Отримати список постів\r",
+							"pm.sendRequest(`${baseUrl}/posts`, (err, res) => { // Використовуємо шаблонні рядки для URL\r",
+							"    if (err) {\r",
+							"        console.error(\"Помилка при отриманні постів:\", err);\r",
+							"    } else {\r",
+							"        pm.test(\"Async: Posts Status code is 200 OK\", () => {\r",
+							"            pm.expect(res).to.have.status(200);\r",
+							"        });\r",
+							"        console.log(\"Async: Отримано пости. Кількість:\", res.json().length);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Запит 2: Отримати список коментарів\r",
+							"pm.sendRequest(`${baseUrl}/comments`, (err, res) => { // Використовуємо шаблонні рядки для URL\r",
+							"    if (err) {\r",
+							"        console.error(\"Помилка при отриманні коментарів:\", err);\r",
+							"    } else {\r",
+							"        pm.test(\"Async: Comments Status code is 200 OK\", () => {\r",
+							"            pm.expect(res).to.have.status(200);\r",
+							"        });\r",
+							"        console.log(\"Async: Отримано коментарі. Кількість:\", res.json().length);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"// Запит 3: Отримати список користувачів\r",
+							"pm.sendRequest(`${baseUrl}/users`, (err, res) => { // Використовуємо шаблонні рядки для URL\r",
+							"    if (err) {\r",
+							"        console.error(\"Помилка при отриманні користувачів:\", err);\r",
+							"    } else {\r",
+							"        pm.test(\"Async: Users Status code is 200 OK\", () => {\r",
+							"            pm.expect(res).to.have.status(200);\r",
+							"        });\r",
+							"        console.log(\"Async: Отримано користувачів. Кількість:\", res.json().length);\r",
+							"    }\r",
+							"});\r",
+							"\r",
+							"console.log(\"Асинхронні запити ініційовано. Основний запит продовжує виконання...\");\r",
+							"// Цей console.log з'явиться раніше, ніж результати асинхронних запитів,\r",
+							"// демонструючи неблокуючий характер."
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/posts/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"posts",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
